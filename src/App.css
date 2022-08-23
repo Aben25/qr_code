@@ -36,3 +36,32 @@
     transform: rotate(360deg);
   }
 }
+body {
+  font-family:  "Montserrat", sans-serif;
+  padding: 1em;
+}
+
+.ais-SearchBox {
+  margin: 1em 0;
+}
+ul.ais-SearchBox li { margin: 0; 
+display: inline-block;}
+
+.pagination {
+  margin: 2rem auto;
+  display: inline-block;
+  padding: 10px 20px;
+    
+}
+li{
+  list-style: none; margin: 0; padding: 0; }
+li a{
+  text-decoration: none; 
+  padding: 0.5rem 1rem;
+  border: 1px solid #ddd;
+  margin: 0 0.1rem;
+  color: #333;
+  display: inline-block;
+  float: none;
+}
+
