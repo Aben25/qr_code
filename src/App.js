@@ -1,10 +1,9 @@
 import logo from "./logo.svg";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Vcard from "./Vcard.js";
-import QrCode from "./QrCode";
+import Vcard from "./component/Vcard.js";
 import React, { useState, useEffect } from "react";
-
+import Index from "./component/Index.js";
 
 
 function App() {
@@ -60,7 +59,7 @@ useEffect(() => {
       <BrowserRouter>
         <Routes>{routeComponents}</Routes>
         <Routes>
-          <Route path="/" contact={contact} element={<QrCode />} />
+          <Route path="/" contact={contact} element={<Index/>} />
         </Routes>
       </BrowserRouter>
     </div>
