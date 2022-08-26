@@ -9,7 +9,6 @@ import {NameContext} from "./Index.js";
 
 export default function Qr() {
     const {name,url} = useContext(NameContext);
-    console.log(name)
     const handleDownloadImage = async () => {
       const element = document.getElementById("print"),
         canvas = await html2canvas(element),

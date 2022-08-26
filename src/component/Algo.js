@@ -22,7 +22,7 @@ const searchClient = algoliasearch(
 export default function Algo({ setName, setUrl }) {
   return (
     <div>
-      <InstantSearch searchClient={searchClient} indexName="info">
+      <InstantSearch searchClient={searchClient} indexName="contact_info">
         <Configure hitsPerPage={3} />
         <div className="search-panel">
           <div className="search-panel__filters">

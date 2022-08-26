@@ -13,7 +13,7 @@ import { Button, Card, ListGroup } from "react-bootstrap";
 import { useContext } from "react";
 import { NameContext } from "./Index.js";
 export default function Hit({ hit}) {
-     const { setName, setUrl } = useContext(NameContext);
+const { setName, setUrl } = useContext(NameContext);
 
 
 
@@ -25,11 +25,13 @@ export default function Hit({ hit}) {
       <div className="hit-description">
         <Highlight attribute="Name" hit={hit} />
       </div>
+      <div className="Name">{hit.FullName}</div>
+
       <div className="Email">{hit.Email}</div>
       <Button
         variant="secondary"
         onClick={() => {
-         setUrl(window.location.href + "" + hit.FirstName);
+          setUrl(window.location.href + "" + hit.FirstName);
           setName(hit.Name);
         }}
       >

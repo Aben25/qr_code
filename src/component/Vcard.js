@@ -5,15 +5,24 @@ import { Button, Card, ListGroup } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-export default function Vcard({ FirstName, Name, LastName, Email, Phone, ParentMemberName }) {
+export default function Vcard({
+  FirstName,
+  FullName,
+  LastName,
+  Email,
+  Phone,
+  ParentMemberName,
+}) {
   var FileSaver = require("file-saver");
   var blob = new Blob(
     [
       `BEGIN:VCARD
 VERSION:3.0
 N:${LastName};${FirstName};;;
-FN:${Name} ${LastName}
+FN:${FullName} ${LastName}
 EMAIL;type=INTERNET;type=pref:${Email}
+TEL;type=WORK,VOICE:${Phone}
+ORG:${ParentMemberName}
 END:VCARD
 `,
     ],
@@ -24,14 +33,13 @@ END:VCARD
   function saveAsFile() {
     saveAs(blob, `${FirstName}.vcf`);
   }
-  console.log(Phone);
   return (
     <Container>
       <Row className="justify-center m-5">
         <Col> </Col>
         <Col sm={6}>
           <Card border="info" style={{ width: "23rem", textAlign: "left" }}>
-            <Card.Header> {Name}</Card.Header>
+            <Card.Header> {FullName}</Card.Header>
             <Card.Body>
               <ListGroup variant="flush">
                 <ListGroup.Item>First Name: {FirstName}</ListGroup.Item>
