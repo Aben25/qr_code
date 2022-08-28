@@ -8,6 +8,7 @@ import {NameContext} from "./Index.js";
 
 
 export default function Qr() {
+  
     const {name,url} = useContext(NameContext);
     const handleDownloadImage = async () => {
       const element = document.getElementById("print"),

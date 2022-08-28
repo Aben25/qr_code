@@ -5,12 +5,14 @@ import {
   SearchBox,
   Hits,
   Highlight,
-  Index,
-  saveObjects,
-  clearObjects,
+  Configure,
+  Panel,
+  RefinementList,
 } from "react-instantsearch-dom";
-import React, { useState, useEffect } from "react";
-import Save from "./Save";
+import React, { useState, useEffect, useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { EventContext } from "../App";
+
 
 
 const searchClient = algoliasearch(
@@ -18,61 +20,53 @@ const searchClient = algoliasearch(
   "68998baf7f780eeee9f1569b3394911b"
 );
 
+const Hit = ({ hit }) => {
+const setone_event = useContext(EventContext);
+    const navigate = useNavigate();
 
-
-
-const Event = () => {
-    const [event, setEvent] = useState([]);
-
-    useEffect(() => {
-      fetch("https://connect.artba.org/api/events", {
-        Meethod: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Basic d2SuLwamTRQfEWqAuwBQ4zSTiSlq34mrICTaMeAIPS4=",
-        },
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          setEvent(data);
-          console.log(data);
-        })
-        .catch((err) => {
-          console.log(err.message);
-        });
-    }, []);
-console.log(event);
-<Save event={event}/>
-    const Hit = ({ hit }) => (
-        
-      <p>
-        <Highlight attribute="name" hit={hit} tagName="mark" />
-      </p>
-    );
-
-
-    // var data = [];
-    // console.log(data); //
-    // console.log(typeof data);
-    // for (var i = 0; i < contact.length; i++) {
-    //   data.push(contact[i].Attendees[0]);
-    // }
-
-    
-
-    // index.clearObjects();
-    // index.saveObjects(event, { autoGenerateObjectIDIfNotExist: true });
-
-
-
-
-
-    return (
-      <InstantSearch indexName="event_info" searchClient={searchClient}>
-        <SearchBox />
-        <Hits hitComponent={Hit} />
-      </InstantSearch>
-    );
+  return (
+    <div className="hit">
+       <a onClick={({}) =>{  setone_event(hit);
+   navigate("/qr");} }>
+     <div>
+       <div className="hit-name">
+         <Highlight attribute="name" hit={hit} />
+       </div>
+       <div className="hit-description">
+         <Highlight attribute="Name" hit={hit} />
+       </div>
+     </div>
+   </a>
+    </div>
+  );
 }
+
+
+
+
+const Event = ({ seteventId }) => {
+  return (
+    <InstantSearch searchClient={searchClient} indexName="event_info">
+      <Configure hitsPerPage={3} />
+      <div className="search-panel">
+        <div className="search-panel__filters">
+          <Panel header="Search for contact information">
+            <RefinementList attribute="Search for contact information" />
+          </Panel>
+        </div>
+
+        <div className="search-panel__results">
+          <SearchBox
+            className="searchbox"
+            translations={{
+              placeholder: "",
+            }}
+          />
+          <Hits seteventId={seteventId} hitComponent={Hit} />
+        </div>
+      </div>
+    </InstantSearch>
+  );
+};
 
 export default Event;

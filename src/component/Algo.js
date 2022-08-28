@@ -11,6 +11,9 @@ import {
   Pagination,
 } from "react-instantsearch-dom";
 import Hit from "./Hit";
+import { useContext } from "react";
+import { EventContext } from "../App";
+
 
 const searchClient = algoliasearch(
   "5DGIE39UOX",
@@ -18,14 +21,23 @@ const searchClient = algoliasearch(
 );
 
 export default function Algo({ setName, setUrl }) {
+
+      const eventName = useContext(EventContext);
+      console.log(
+        "eventName",
+        typeof eventName.eventName,
+        "setName",
+        eventName
+      );
+
   return (
     <div>
       <InstantSearch searchClient={searchClient} indexName="contact_info">
         <Configure hitsPerPage={3} />
         <div className="search-panel">
           <div className="search-panel__filters">
-            <Panel header="Search for contact information">
-              <RefinementList attribute="Search for contact information" />
+            <Panel header={eventName.eventName}>
+              <RefinementList attribute="Search for contact information1" />
             </Panel>
           </div>
 
