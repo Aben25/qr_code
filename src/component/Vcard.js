@@ -35,9 +35,8 @@ END:VCARD
   }
   return (
     <Container>
-      <Row className="justify-center m-5">
-        <Col> </Col>
-        <Col sm={6}>
+      <Row className="justify-center">
+        <Col sm={0}>
           <Card border="info" style={{ width: "23rem", textAlign: "left" }}>
             <Card.Header> {FullName}</Card.Header>
             <Card.Body>
@@ -54,7 +53,6 @@ END:VCARD
             </Card.Body>
           </Card>
         </Col>
-        <Col> </Col>
       </Row>
     </Container>
   );

@@ -15,16 +15,16 @@ const [name, setName] = useState("John Doe");
 
   return (
     <Container>
-      <Row className="justify-center m-5">
-        <Col> </Col>
-        <Col sm={6}>
-          <NameContext.Provider value={{name,url, setUrl,setName}}>
+      <NameContext.Provider value={{ name, url, setUrl, setName }}>
+        <Row className="">
+          <Col sm={4}>
             <Qr />
-             <Algo />
-          </NameContext.Provider>
-        </Col>
-        <Col> </Col>
-      </Row>
+          </Col>
+          <Col sm={8}>
+            <Algo />
+          </Col>
+        </Row>
+      </NameContext.Provider>
     </Container>
   );
 }

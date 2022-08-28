@@ -28,15 +28,17 @@ const { setName, setUrl } = useContext(NameContext);
       <div className="Name">{hit.FullName}</div>
 
       <div className="Email">{hit.Email}</div>
-      <Button
-        variant="secondary"
-        onClick={() => {
-          setUrl(window.location.href + "" + hit.FirstName);
-          setName(hit.Name);
-        }}
-      >
-        Generate QR codeP
-      </Button>
+      {hit.Email.length === 0 ? null : (
+        <Button
+          variant="secondary"
+          onClick={() => {
+            setUrl(window.location.href + "" + hit.FirstName);
+            setName(hit.FullName);
+          }}
+        >
+          Generate QR codeP
+        </Button>
+      )}
     </div>
   );
 }

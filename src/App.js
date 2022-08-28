@@ -3,6 +3,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Vcard from "./component/Vcard.js";
 import React, { useState, useEffect } from "react";
 import Index from "./component/Index.js";
+import Event from "./component/Event";
+
+
+
 const algoliasearch = require("algoliasearch");
 
 
@@ -80,7 +84,8 @@ index.saveObjects(data, { autoGenerateObjectIDIfNotExist: true });
       <BrowserRouter>
         <Routes>{routeComponents}</Routes>
         <Routes>
-          <Route path="/" contact={contact} element={<Index/>} />
+          <Route path="/" element={<Event />} />
+          <Route path="/qr" contact={contact} element={<Index />} />
         </Routes>
       </BrowserRouter>
     </div>

@@ -12,8 +12,6 @@ import {
 } from "react-instantsearch-dom";
 import Hit from "./Hit";
 
-
-
 const searchClient = algoliasearch(
   "5DGIE39UOX",
   "68998baf7f780eeee9f1569b3394911b"

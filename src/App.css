@@ -44,6 +44,9 @@ body {
 .ais-SearchBox {
   margin: 1em 0;
 }
+.search-panel{
+  width: 100%;
+}
 ul.ais-SearchBox li { margin: 0; 
 display: inline-block;}
 
@@ -64,4 +67,8 @@ li a{
   display: inline-block;
   float: none;
 }
-
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
